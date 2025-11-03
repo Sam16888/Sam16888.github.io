@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>First-test-KATEX-Def. of Limit</title>
-    <url>/2025/10/13/First-test-KATEX-Def.%20of%20Limit/</url>
+    <title>KaTeX語法測試-微積分極限定量敘述定義</title>
+    <url>/2025/10/13/First-test-KaTeX-Def.%20of%20Limit/</url>
     <content><![CDATA[按照butterfly官網教學安裝完數學套件之後的第一次測試，我就用大一必修微積分的第一個定義：函數極限定量敘述定義當作測試內容。
 假設DDD為RRR中一個包含aaa的集合，fff為一個從DDD映射至RRR的函數，fff准許在aaa沒有定義，LLL為一個實數。
 如果「 對於任何一個正數 ε\varepsilonε 而言存在一個正數 δ\deltaδ 使得
@@ -12,36 +12,34 @@
 ∀\forall∀ε\varepsilonε&gt;0 ∃\exists∃δ\deltaδ&gt;0 ∀\forall∀xxx∈\in∈DDD 0&lt;|xxx-aaa|&lt;δ\deltaδ→\to→|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε
 ]]></content>
       <categories>
-        <category>category2</category>
+        <category>KaTeX</category>
       </categories>
       <tags>
-        <tag>tag2</tag>
+        <tag>測試</tag>
+        <tag>微積分</tag>
       </tags>
   </entry>
   <entry>
-    <title>First-test-article</title>
+    <title>短文測試</title>
     <url>/2025/10/04/First-test-article/</url>
     <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
 在家用MBA練習在Hexo發布第一篇測試文章。
 ]]></content>
-      <categories>
-        <category>category1</category>
-      </categories>
       <tags>
-        <tag>tag1</tag>
+        <tag>測試</tag>
       </tags>
   </entry>
   <entry>
-    <title>插入圖檔測試</title>
+    <title>Markdown插入圖檔測試</title>
     <url>/2025/10/22/Images%20posting/</url>
     <content><![CDATA[
 
 ]]></content>
       <categories>
-        <category>category3</category>
+        <category>Ｍarkdown</category>
       </categories>
       <tags>
-        <tag>tag3</tag>
+        <tag>測試</tag>
       </tags>
   </entry>
   <entry>
