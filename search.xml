@@ -20,25 +20,6 @@
       </tags>
   </entry>
   <entry>
-    <title>KaTeX語法測試-微積分極限定量敘述定義</title>
-    <url>/2025/10/13/First-test-KaTeX-Def.%20of%20Limit/</url>
-    <content><![CDATA[按照butterfly官網教學安裝完數學套件之後的第一次測試，我就用大一必修微積分的第一個定義：函數極限定量敘述定義當作測試內容。
-假設DDD為RRR中一個包含aaa的集合，fff為一個從DDD映射至RRR的函數，fff准許在aaa沒有定義，LLL為一個實數。
-如果「 對於任何一個正數 ε\varepsilonε 而言存在一個正數 δ\deltaδ 使得
-當 xxx∈\in∈DDD 且 0&lt;|xxx-aaa|&lt;δ\deltaδ 時，|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε。 」，
-則我們說 fff 在 aaa 的極限為 LLL，以 lim⁡x→af(x)=L\lim_{x \to a} f(x) = Llimx→a​f(x)=L 表示。
-用數學符號述敘極限定義，如下所示。
-∀\forall∀ε\varepsilonε&gt;0 ∃\exists∃δ\deltaδ&gt;0 ∀\forall∀xxx∈\in∈DDD 0&lt;|xxx-aaa|&lt;δ\deltaδ→\to→|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε
-]]></content>
-      <categories>
-        <category>KaTeX</category>
-      </categories>
-      <tags>
-        <tag>測試</tag>
-        <tag>微積分</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>短文測試</title>
     <url>/2025/10/04/First-test-article/</url>
     <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
