@@ -30,6 +30,19 @@
       </tags>
   </entry>
   <entry>
+    <title>Markdown插入圖檔測試</title>
+    <url>/2025/10/22/Images%20posting/</url>
+    <content><![CDATA[
+
+]]></content>
+      <categories>
+        <category>Ｍarkdown</category>
+      </categories>
+      <tags>
+        <tag>測試</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k</title>
     <url>/2025/11/03/Install%20iTerm2/</url>
     <content><![CDATA[一.前言
@@ -156,18 +169,5 @@ Deploy to remote sites
 $ hexo deploy
 More info: Deployment
 ]]></content>
-  </entry>
-  <entry>
-    <title>Markdown插入圖檔測試</title>
-    <url>/2025/10/22/Images%20posting/</url>
-    <content><![CDATA[
-
-]]></content>
-      <categories>
-        <category>Ｍarkdown</category>
-      </categories>
-      <tags>
-        <tag>測試</tag>
-      </tags>
   </entry>
 </search>
