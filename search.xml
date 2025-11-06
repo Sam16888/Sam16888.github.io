@@ -1,25 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>KaTeX語法測試-微積分極限定量敘述定義</title>
-    <url>/2025/11/03/First-test-KaTeX-Definition%20of%20Limit/</url>
-    <content><![CDATA[按照butterfly官網教學安裝完數學套件之後的第一次測試，我就用大一必修微積分的第一個定義：函數極限定量敘述定義當作測試內容。
-假設DDD為RRR中一個包含aaa的集合，fff為一個從DDD映射至RRR的函數，fff准許在aaa沒有定義，LLL為一個實數。
-如果「 對於任何一個正數 ε\varepsilonε 而言存在一個正數 δ\deltaδ 使得
-當 xxx∈\in∈DDD 且 0&lt;|xxx-aaa|&lt;δ\deltaδ 時，|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε。 」，
-則我們說 fff 在 aaa 的極限為 LLL，以 lim⁡x→af(x)=L\lim_{x \to a} f(x) = Llimx→a​f(x)=L 表示。
-用數學符號述敘極限定義，如下所示。
-∀\forall∀ε\varepsilonε&gt;0 ∃\exists∃δ\deltaδ&gt;0 ∀\forall∀xxx∈\in∈DDD 0&lt;|xxx-aaa|&lt;δ\deltaδ→\to→|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε
-]]></content>
-      <categories>
-        <category>KaTeX</category>
-      </categories>
-      <tags>
-        <tag>測試</tag>
-        <tag>微積分</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>短文測試</title>
     <url>/2025/10/04/First-test-article/</url>
     <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
@@ -43,28 +24,28 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2025/10/03/hello-world/</url>
-    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start
-Create a new post
-$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server
-$ hexo server
-More info: Server
-Generate static files
-$ hexo generate
-More info: Generating
-Deploy to remote sites
-$ hexo deploy
-More info: Deployment
+    <title>KaTeX語法測試-微積分極限定量敘述定義</title>
+    <url>/2025/11/03/First-test-KaTeX-Definition%20of%20Limit/</url>
+    <content><![CDATA[按照butterfly官網教學安裝完數學套件之後的第一次測試，我就用大一必修微積分的第一個定義：函數極限定量敘述定義當作測試內容。
+假設DDD為RRR中一個包含aaa的集合，fff為一個從DDD映射至RRR的函數，fff准許在aaa沒有定義，LLL為一個實數。
+如果「 對於任何一個正數 ε\varepsilonε 而言存在一個正數 δ\deltaδ 使得
+當 xxx∈\in∈DDD 且 0&lt;|xxx-aaa|&lt;δ\deltaδ 時，|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε。 」，
+則我們說 fff 在 aaa 的極限為 LLL，以 lim⁡x→af(x)=L\lim_{x \to a} f(x) = Llimx→a​f(x)=L 表示。
+用數學符號述敘極限定義，如下所示。
+∀\forall∀ε\varepsilonε&gt;0 ∃\exists∃δ\deltaδ&gt;0 ∀\forall∀xxx∈\in∈DDD 0&lt;|xxx-aaa|&lt;δ\deltaδ→\to→|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε
 ]]></content>
+      <categories>
+        <category>KaTeX</category>
+      </categories>
+      <tags>
+        <tag>測試</tag>
+        <tag>微積分</tag>
+      </tags>
   </entry>
   <entry>
     <title>在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k</title>
     <url>/2025/11/03/Install%20iTerm2/</url>
-    <content><![CDATA[ㄧ.前言
+    <content><![CDATA[一.前言
 我原先是按照下方文章更改內建的終端機，後來發現指令碼無法變色(無法提高易讀性)，
 macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 所以又改用iTerm2(另一種終端機)。
@@ -74,19 +55,19 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 我一開使是看這部YT影片(大致說明客製化iTerm2的過程)
 [ 分享 ] 強化你的 Macbook 的 Terminal 終端機 ！ 更改漂亮主體跟背景顏色！ 我用 oh my zsh 就能做到 ！ 也能裝強大插件讓終端機更好用 ！
 該影片的內容如下(按順序)：
-1.打開終端機安裝Homebrew
+1.  打開終端機安裝Homebrew
 可以參考下方影片(這是我另外找的)，詳細解說安裝Homebrew的過程。
 在macOS安裝Homebrew，測試brew套件管理工具安裝軟體
 其中有一段安裝過程會跑比較久，請耐心等候，不是你的原生終端機當掉喔XD
-2.打開終端機用Homebrew安裝iTerm2
-3.下載iTerm2的顏色方案(Color Scheme)壓縮檔＆設定iTerm2顏色方案
-4.用iTerm2安裝oh my zsh
-5.更改zsh主題
+2.  打開終端機用Homebrew安裝iTerm2
+3.  下載iTerm2的顏色方案(Color Scheme)壓縮檔＆設定iTerm2顏色方案
+4.  用iTerm2安裝oh my zsh
+5.  更改zsh主題
 方法1：前往本機的隱藏資料夾打開.zshrc文字檔編輯(上方第二個強化Macbook終端機的影片內有詳述)
 方法2：用iTerm2下指令vim ~/.zshrc，然後打開.zshrc文字檔進行編輯(上方第一個瘋先生終端機美化教學的網址內有詳述)。
-6.安裝zsh套件(上述影片僅有簡易示範)
+6.  安裝zsh套件(上述影片僅有簡易示範)
 影片裡面我唯一有裝的是google套件XD
-7.自訂常用操作快捷鍵
+7.  自訂常用操作快捷鍵
 因為我想用的主題是與Ｍac最搭的powerlevel10k，而且上述影片沒有說明這個主題，
 因此這部影片我只看到更改zsh主題，然後又另外搜尋powerlevel10k的相關文章。
 最後我是選擇參考下方這篇文章。
@@ -97,11 +78,10 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 這是安裝完powerlevel10k之後重開iTerm2的畫面
 
 1.如何消除錯誤訊息？
-  方法1 : 用iTerm2下指令`p10k configure`
-         執行之後，你就要重新安裝Meslo Nerd Font(一種字體)以及完成一系列的樣式設定選擇題(耗時)。
-  方法2 : 重新定義參數「 **typeset -g POWERLEVEL9K_INSTANT_PROMPT** 」的賦值
-         執行之後，你就不用重新設定p10k主題(省時)。
-
+方法1 : 用iTerm2下指令p10k configure
+執行之後，你就要重新安裝Meslo Nerd Font(一種字體)以及完成一系列的樣式設定選擇題(耗時)。
+方法2 : 重新定義參數「 typeset -g POWERLEVEL9K_INSTANT_PROMPT 」的賦值
+執行之後，你就不用重新設定p10k主題(省時)。
 方法1我沒試過，我是用方法2。
 又因為我覺得錯誤訊息中方法2的說明不夠清楚，所以我另外Google搜尋方法2的相關資訊。
 我是Google錯誤訊息中某一行文字並刪掉一些不重要的字(讀者可以思考看看我是搜尋什麼)，搜尋的第一個結果是AI摘要。
@@ -121,7 +101,7 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 https://github.com/romkatv/powerlevel10k/issues/1942
 很幸運地，找到了一個簡易、快速而且可行的解方，剛好這位分享解方的外國前輩獲得最多的按讚數。
 
-非常簡單，看圖照前2個步驟，
+非常簡單，按照他說的前2個步驟，
 然後重開iTerm2就會呈現乾淨的畫面(沒有[oh-my-zsh] theme ‘powerlevel10k’ not found這一行的圖3)。
 四.iTerm2介面調色與預設樣式
 這個是在你選定顏色方案之後做的事情
@@ -170,5 +150,24 @@ fzf的詳細介紹可以參考如下網站
         <tag>OhMyZsh</tag>
         <tag>powerlevel10k</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/10/03/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start
+Create a new post
+$ hexo new &quot;My New Post&quot;
+More info: Writing
+Run server
+$ hexo server
+More info: Server
+Generate static files
+$ hexo generate
+More info: Generating
+Deploy to remote sites
+$ hexo deploy
+More info: Deployment
+]]></content>
   </entry>
 </search>
