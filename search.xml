@@ -20,16 +20,6 @@
       </tags>
   </entry>
   <entry>
-    <title>短文測試</title>
-    <url>/2025/10/04/First-test-article/</url>
-    <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
-在家用MBA練習在Hexo發布第一篇測試文章。
-]]></content>
-      <tags>
-        <tag>測試</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Markdown插入圖檔測試</title>
     <url>/2025/10/22/Images%20posting/</url>
     <content><![CDATA[
@@ -38,6 +28,16 @@
       <categories>
         <category>Ｍarkdown</category>
       </categories>
+      <tags>
+        <tag>測試</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>短文測試</title>
+    <url>/2025/10/04/First-test-article/</url>
+    <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
+在家用MBA練習在Hexo發布第一篇測試文章。
+]]></content>
       <tags>
         <tag>測試</tag>
       </tags>
@@ -95,14 +95,17 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 
 順帶一提，如果將off改成quiet，也可以正常執行終端機。
 我覺得兩種參數值的執行速度沒有差別，不像錯誤訊息中所說參數值用quiet會比較快。
+
 2.如何消除「 [oh-my-zsh] theme ‘powerlevel10k’ not found 」這一句話？
 這次我大方一點直接說，我就是原封不動地Google標題雙引號裡面的內容。
 點擊第一個Github issues連結(如下所示)進去找解答
-https://github.com/romkatv/powerlevel10k/issues/1942
+&lt;https://github.com/romkatv/powerlevel10k/issues/1942&gt;
 很幸運地，找到了一個簡易、快速而且可行的解方，剛好這位分享解方的外國前輩獲得最多的按讚數。
 
+
 非常簡單，按照他說的前2個步驟，
-然後重開iTerm2就會呈現乾淨的畫面(沒有[oh-my-zsh] theme ‘powerlevel10k’ not found這一行的圖3)。
+然後重開iTerm2就會呈現乾淨的畫面(沒有[oh-my-zsh] theme 'powerlevel10k' not found這一行的圖3)。
+
 四.iTerm2介面調色與預設樣式
 這個是在你選定顏色方案之後做的事情
 先打開iTerm2晾在一旁，可以打一些基本指令，方便之後調色。
@@ -137,9 +140,9 @@ fzf的詳細介紹可以參考如下網站
 我是在鋰學院看終端機教學影片前半部之後才知道iTerm2這個酷東西，既然我決定轉職後端工程師，而且以後幾乎每天都會用到終端機，我為何不用個性化，而且可以隨時隨地隨心情調整樣式的終端機呢XD？
 雖然花了將近15個小時才搞定好(每天花兩個多小時，搞了一週。)，但獲益真的真的真的良多。
 有哪些獲益呢？
-1.熟悉終部分終端機的基本操作
-2.提升Ｈuli前輩所說的四大核心能力(我就不多說了)
-3.提升英文閱讀能力
+1.  熟悉終部分終端機的基本操作
+2.  提升Ｈuli前輩所說的四大核心能力(我就不多說了)
+3.  提升英文閱讀能力
 ]]></content>
       <categories>
         <category>安裝教學</category>
