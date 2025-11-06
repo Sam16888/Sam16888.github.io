@@ -30,19 +30,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Markdown插入圖檔測試</title>
-    <url>/2025/10/22/Images%20posting/</url>
-    <content><![CDATA[
-
-]]></content>
-      <categories>
-        <category>Ｍarkdown</category>
-      </categories>
-      <tags>
-        <tag>測試</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k</title>
     <url>/2025/11/03/Install%20iTerm2/</url>
     <content><![CDATA[ㄧ.前言
@@ -123,7 +110,7 @@ https://github.com/romkatv/powerlevel10k/issues/1942
 3.zsh-autocomplete(自動補全指令)
 當你輸入指令碼時，會在下方列出所有相同前綴的指令碼，
 按Tab鍵選定左上角第一個指令碼，按向下鍵可以自行選定其他指令碼。
-4.fzfCommand-line fuzzy finder
+4.fzf(Command-line fuzzy finder 命令列模糊搜尋器)
 fzf又稱為終端機的檔案總管，是一種任意類型資料的互動式過濾程式，
 只需輸入部分關鍵字元，即可快速找到你要的資料。
 fzf的詳細介紹可以參考如下網站
@@ -131,7 +118,7 @@ fzf的詳細介紹可以參考如下網站
 這邊稍微說明上方網站漏掉的部分 - 「如何進行按鍵綁定與模糊補全設置？」
 先用iTerm下指令brew --prefix fzf
 即可取得fzf的安裝目錄(下方截圖綠色那一行)
-接著輸入安裝目錄並按Enter執行，然後回答三個問題(都按y)即可完成設置
+接著輸入安裝目錄並按Enter執行，然後回答三個問題(都按y)即可完成設置。
 
 六.心得
 我是在鋰學院看終端機教學影片前半部之後才知道iTerm2這個酷東西，既然我決定轉職後端工程師，而且以後幾乎每天都會用到終端機，我為何不用個性化，而且可以隨時隨地隨心情調整樣式的終端機呢XD？
@@ -149,6 +136,19 @@ fzf的詳細介紹可以參考如下網站
         <tag>iTerm2</tag>
         <tag>OhMyZsh</tag>
         <tag>powerlevel10k</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Markdown插入圖檔測試</title>
+    <url>/2025/10/22/Images%20posting/</url>
+    <content><![CDATA[
+
+]]></content>
+      <categories>
+        <category>Ｍarkdown</category>
+      </categories>
+      <tags>
+        <tag>測試</tag>
       </tags>
   </entry>
   <entry>
