@@ -30,6 +30,38 @@
       </tags>
   </entry>
   <entry>
+    <title>Markdown插入圖檔測試</title>
+    <url>/2025/10/22/Images%20posting/</url>
+    <content><![CDATA[
+
+]]></content>
+      <categories>
+        <category>Ｍarkdown</category>
+      </categories>
+      <tags>
+        <tag>測試</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/10/03/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start
+Create a new post
+$ hexo new &quot;My New Post&quot;
+More info: Writing
+Run server
+$ hexo server
+More info: Server
+Generate static files
+$ hexo generate
+More info: Generating
+Deploy to remote sites
+$ hexo deploy
+More info: Deployment
+]]></content>
+  </entry>
+  <entry>
     <title>在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k</title>
     <url>/2025/11/03/Install%20iTerm2/</url>
     <content><![CDATA[ㄧ.前言
@@ -64,11 +96,12 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 三.中途(可能)會遇到的兩個問題
 這是安裝完powerlevel10k之後重開iTerm2的畫面
 
-問題1:如何消除錯誤訊息？
-方法1 : 用iTerm2下指令p10k configure
-執行之後，你就要重新安裝Meslo Nerd Font(一種字體)以及完成一系列的樣式設定選擇題(耗時)。
-方法2 : 重新定義參數「 typeset -g POWERLEVEL9K_INSTANT_PROMPT 」的賦值
-執行之後，你就不用重新設定p10k主題(省時)。
+1.如何消除錯誤訊息？
+  方法1 : 用iTerm2下指令`p10k configure`
+         執行之後，你就要重新安裝Meslo Nerd Font(一種字體)以及完成一系列的樣式設定選擇題(耗時)。
+  方法2 : 重新定義參數「 **typeset -g POWERLEVEL9K_INSTANT_PROMPT** 」的賦值
+         執行之後，你就不用重新設定p10k主題(省時)。
+
 方法1我沒試過，我是用方法2。
 又因為我覺得錯誤訊息中方法2的說明不夠清楚，所以我另外Google搜尋方法2的相關資訊。
 我是Google錯誤訊息中某一行文字並刪掉一些不重要的字(讀者可以思考看看我是搜尋什麼)，搜尋的第一個結果是AI摘要。
@@ -82,7 +115,7 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 
 順帶一提，如果將off改成quiet，也可以正常執行終端機。
 我覺得兩種參數值的執行速度沒有差別，不像錯誤訊息中所說參數值用quiet會比較快。
-問題2:如何消除「 [oh-my-zsh] theme ‘powerlevel10k’ not found 」這一句話？
+2.如何消除「 [oh-my-zsh] theme ‘powerlevel10k’ not found 」這一句話？
 這次我大方一點直接說，我就是原封不動地Google標題雙引號裡面的內容。
 點擊第一個Github issues連結(如下所示)進去找解答
 https://github.com/romkatv/powerlevel10k/issues/1942
@@ -116,7 +149,7 @@ fzf又稱為終端機的檔案總管，是一種任意類型資料的互動式�
 fzf的詳細介紹可以參考如下網站
 12 - fzf - 檔案與目錄模糊搜尋指令工具
 這邊稍微說明上方網站漏掉的部分 - 「如何進行按鍵綁定與模糊補全設置？」
-先用iTerm下指令brew --prefix fzf
+先用iTerm2下指令brew --prefix fzf
 即可取得fzf的安裝目錄(下方截圖綠色那一行)
 接著輸入安裝目錄並按Enter執行，然後回答三個問題(都按y)即可完成設置。
 
@@ -137,37 +170,5 @@ fzf的詳細介紹可以參考如下網站
         <tag>OhMyZsh</tag>
         <tag>powerlevel10k</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Markdown插入圖檔測試</title>
-    <url>/2025/10/22/Images%20posting/</url>
-    <content><![CDATA[
-
-]]></content>
-      <categories>
-        <category>Ｍarkdown</category>
-      </categories>
-      <tags>
-        <tag>測試</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2025/10/03/hello-world/</url>
-    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start
-Create a new post
-$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server
-$ hexo server
-More info: Server
-Generate static files
-$ hexo generate
-More info: Generating
-Deploy to remote sites
-$ hexo deploy
-More info: Deployment
-]]></content>
   </entry>
 </search>
