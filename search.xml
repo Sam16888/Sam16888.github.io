@@ -43,15 +43,34 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2025/10/03/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start
+Create a new post
+$ hexo new &quot;My New Post&quot;
+More info: Writing
+Run server
+$ hexo server
+More info: Server
+Generate static files
+$ hexo generate
+More info: Generating
+Deploy to remote sites
+$ hexo deploy
+More info: Deployment
+]]></content>
+  </entry>
+  <entry>
     <title>在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k</title>
     <url>/2025/11/03/Install%20iTerm2/</url>
-    <content><![CDATA[一.前言
+    <content><![CDATA[前言
 我原先是按照下方文章更改內建的終端機，後來發現指令碼無法變色(無法提高易讀性)，
 macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 所以又改用iTerm2(另一種終端機)。
 雖然安裝過程比較冗長且麻煩，但我很喜歡，也很滿意完成的結果。
 
-二.安裝流程(落落長而且有點麻煩XD)
+安裝流程(落落長而且有點麻煩XD)
 我一開使是看這部YT影片(大致說明客製化iTerm2的過程)
 [ 分享 ] 強化你的 Macbook 的 Terminal 終端機 ！ 更改漂亮主體跟背景顏色！ 我用 oh my zsh 就能做到 ！ 也能裝強大插件讓終端機更好用 ！
 該影片的內容如下(按順序)：
@@ -74,7 +93,7 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 如何使用Zsh + Powerlevel10k 打造Terminal
 我是從4.安裝powerlevel10k開始往下閱讀，
 比較特別的地方是需要用終端機下指令安裝這個主題，然後會安裝Meslo Nerd Font(一種字體)以及完成一系列的樣式設定選擇題，安裝主題過程請詳見該篇文章。
-三.中途(可能)會遇到的兩個問題
+中途(可能)會遇到的兩個問題
 這是安裝完powerlevel10k之後重開iTerm2的畫面
 
 1.如何消除錯誤訊息？
@@ -105,7 +124,7 @@ powerlevel10k之神奇解法
 非常簡單，按照他說的前2個步驟，
 然後重開iTerm2就會呈現乾淨的畫面(沒有[oh-my-zsh] theme 'powerlevel10k' not found這一行的圖3)。
 
-四.iTerm2介面調色與預設樣式
+iTerm2介面調色與預設樣式
 這個是在你選定顏色方案之後做的事情
 先打開iTerm2晾在一旁，可以打一些基本指令，方便之後調色。
 接著按Session =&gt; Edit Session =&gt; Colors
@@ -117,7 +136,7 @@ powerlevel10k之神奇解法
 然後在該頁面按下「 Copy Current Settings to Selected Profile 」，
 最後按Replace。
 之後你每次都可以使用預設樣式的iTerm2。
-五.oh-my-zsh套件簡易說明(我有安裝的套件)
+oh-my-zsh套件簡易說明(我有安裝的套件)
 1.zsh-autosuggestions(自動提示指令)
 當你輸入指令碼時，會以灰字提示上一次使用的相同前綴指令碼，按右鍵可以自動補全。
 2.zsh-fast-syntax-highlighting(快速語法高亮)
@@ -135,7 +154,7 @@ fzf的詳細介紹可以參考如下網站
 即可取得fzf的安裝目錄(下方截圖綠色那一行)
 接著輸入安裝目錄並按Enter執行，然後回答三個問題(都按y)即可完成設置。
 
-六.心得
+心得
 我是在鋰學院看終端機教學影片前半部之後才知道iTerm2這個酷東西，既然我決定轉職後端工程師，而且以後幾乎每天都會用到終端機，我為何不用個性化，而且可以隨時隨地隨心情調整樣式的終端機呢XD？
 雖然花了將近15個小時才搞定好(每天花兩個多小時，搞了一週。)，但獲益真的真的真的良多。
 有哪些獲益呢？
@@ -152,24 +171,5 @@ fzf的詳細介紹可以參考如下網站
         <tag>OhMyZsh</tag>
         <tag>powerlevel10k</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2025/10/03/hello-world/</url>
-    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start
-Create a new post
-$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server
-$ hexo server
-More info: Server
-Generate static files
-$ hexo generate
-More info: Generating
-Deploy to remote sites
-$ hexo deploy
-More info: Deployment
-]]></content>
   </entry>
 </search>
