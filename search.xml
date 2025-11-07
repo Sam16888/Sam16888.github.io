@@ -43,25 +43,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2025/10/03/hello-world/</url>
-    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start
-Create a new post
-$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server
-$ hexo server
-More info: Server
-Generate static files
-$ hexo generate
-More info: Generating
-Deploy to remote sites
-$ hexo deploy
-More info: Deployment
-]]></content>
-  </entry>
-  <entry>
     <title>在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k</title>
     <url>/2025/11/03/Install%20iTerm2/</url>
     <content><![CDATA[一.前言
@@ -70,7 +51,7 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 所以又改用iTerm2(另一種終端機)。
 雖然安裝過程比較冗長且麻煩，但我很喜歡，也很滿意完成的結果。
 
-二.安裝流程~~(落落長而且有點麻煩XD)~~
+二.安裝流程(落落長而且有點麻煩XD)
 我一開使是看這部YT影片(大致說明客製化iTerm2的過程)
 [ 分享 ] 強化你的 Macbook 的 Terminal 終端機 ！ 更改漂亮主體跟背景顏色！ 我用 oh my zsh 就能做到 ！ 也能裝強大插件讓終端機更好用 ！
 該影片的內容如下(按順序)：
@@ -85,13 +66,13 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 方法1：前往本機的隱藏資料夾打開.zshrc文字檔編輯(上方第二個強化Macbook終端機的影片內有詳述)
 方法2：用iTerm2下指令vim ~/.zshrc，然後打開.zshrc文字檔進行編輯(上方第一個瘋先生終端機美化教學的網址內有詳述)。
 6.  安裝zsh套件(上述影片僅有簡易示範)
-影片裡面我唯一有裝的是google套件XD
+影片裡面我唯一有安裝的是google套件
 7.  自訂常用操作快捷鍵
 因為我想用的主題是與Ｍac最搭的powerlevel10k，而且上述影片沒有說明這個主題，
 因此這部影片我只看到更改zsh主題，然後又另外搜尋powerlevel10k的相關文章。
 最後我是選擇參考下方這篇文章。
 如何使用Zsh + Powerlevel10k 打造Terminal
-我是從4.安裝powerlevel10k開始往下閱讀
+我是從4.安裝powerlevel10k開始往下閱讀，
 比較特別的地方是需要用終端機下指令安裝這個主題，然後會安裝Meslo Nerd Font(一種字體)以及完成一系列的樣式設定選擇題，安裝主題過程請詳見該篇文章。
 三.中途(可能)會遇到的兩個問題
 這是安裝完powerlevel10k之後重開iTerm2的畫面
@@ -171,5 +152,24 @@ fzf的詳細介紹可以參考如下網站
         <tag>OhMyZsh</tag>
         <tag>powerlevel10k</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/10/03/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start
+Create a new post
+$ hexo new &quot;My New Post&quot;
+More info: Writing
+Run server
+$ hexo server
+More info: Server
+Generate static files
+$ hexo generate
+More info: Generating
+Deploy to remote sites
+$ hexo deploy
+More info: Deployment
+]]></content>
   </entry>
 </search>
