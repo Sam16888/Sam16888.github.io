@@ -20,6 +20,16 @@
       </tags>
   </entry>
   <entry>
+    <title>短文測試</title>
+    <url>/2025/10/04/First-test-article/</url>
+    <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
+在家用MBA練習在Hexo發布第一篇測試文章。
+]]></content>
+      <tags>
+        <tag>測試</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Markdown插入圖檔測試</title>
     <url>/2025/10/22/Images%20posting/</url>
     <content><![CDATA[
@@ -45,19 +55,21 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 我一開使是看這部YT影片(大致說明客製化iTerm2的過程)
 [ 分享 ] 強化你的 Macbook 的 Terminal 終端機 ！ 更改漂亮主體跟背景顏色！ 我用 oh my zsh 就能做到 ！ 也能裝強大插件讓終端機更好用 ！
 該影片的內容如下(按順序)：
-1.  打開終端機安裝Homebrew
+1. 打開終端機安裝Homebrew
 可以參考下方影片(這是我另外找的)，詳細解說安裝Homebrew的過程。
 在macOS安裝Homebrew，測試brew套件管理工具安裝軟體
 其中有一段安裝過程會跑比較久，請耐心等候，不是你的原生終端機當掉喔XD
-2.  打開終端機用Homebrew安裝iTerm2
-3.  下載iTerm2的顏色方案(Color Scheme)壓縮檔＆設定iTerm2顏色方案
-4.  用iTerm2安裝oh my zsh
-5.  更改zsh主題
+2. 打開終端機用Homebrew安裝iTerm2
+3. 下載iTerm2的顏色方案(Color Scheme)壓縮檔＆設定iTerm2顏色方案
+4. 用iTerm2安裝oh my zsh
+5. 更改zsh主題
+
 方法1：前往本機的隱藏資料夾打開.zshrc文字檔編輯(上方第二個強化Macbook終端機的影片內有詳述)
 方法2：用iTerm2下指令vim ~/.zshrc，然後打開.zshrc文字檔進行編輯(上方第一個瘋先生終端機美化教學的網址內有詳述)。
-6.  安裝zsh套件(上述影片僅有簡易示範)
+6. 安裝zsh套件(上述影片僅有簡易示範)
 影片裡面我唯一有安裝的是google套件
-7.  自訂常用操作快捷鍵
+7. 自訂常用操作快捷鍵
+
 因為我想用的主題是與Ｍac最搭的powerlevel10k，而且上述影片沒有說明這個主題，
 因此這部影片我只看到更改zsh主題，然後又另外搜尋powerlevel10k的相關文章。
 最後我是選擇參考下方這篇文章。
@@ -140,16 +152,6 @@ fzf的詳細介紹可以參考如下網站
         <tag>iTerm2</tag>
         <tag>OhMyZsh</tag>
         <tag>powerlevel10k</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>短文測試</title>
-    <url>/2025/10/04/First-test-article/</url>
-    <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
-在家用MBA練習在Hexo發布第一篇測試文章。
-]]></content>
-      <tags>
-        <tag>測試</tag>
       </tags>
   </entry>
   <entry>
