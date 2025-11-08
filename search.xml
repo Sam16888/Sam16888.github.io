@@ -43,25 +43,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2025/10/03/hello-world/</url>
-    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick Start
-Create a new post
-$ hexo new &quot;My New Post&quot;
-More info: Writing
-Run server
-$ hexo server
-More info: Server
-Generate static files
-$ hexo generate
-More info: Generating
-Deploy to remote sites
-$ hexo deploy
-More info: Deployment
-]]></content>
-  </entry>
-  <entry>
     <title>在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k</title>
     <url>/2025/11/03/Install%20iTerm2/</url>
     <content><![CDATA[前言
@@ -97,9 +78,10 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 這是安裝完powerlevel10k之後重開iTerm2的畫面
 
 1.如何消除錯誤訊息？
-方法1.  用iTerm2下指令p10k configure
+
+方法1:用iTerm2下指令p10k configure
 執行之後，你就要重新安裝Meslo Nerd Font(一種字體)以及完成一系列的樣式設定選擇題(耗時)。
-方法2.  重新定義參數「 typeset -g POWERLEVEL9K_INSTANT_PROMPT 」的賦值
+方法2:重新定義參數「 typeset -g POWERLEVEL9K_INSTANT_PROMPT 」的賦值
 執行之後，你就不用重新設定p10k主題(省時)。
 方法1我沒試過，我是用方法2。
 又因為我覺得錯誤訊息中方法2的說明不夠清楚，所以我另外Google搜尋方法2的相關資訊。
@@ -111,9 +93,9 @@ macOS 終端機美化教學 4步驟打造絢麗介面提升工作效率
 在最上方(位置隨意，方便查閱即可。)加入下方這一行
 「 typeset -g POWERLEVEL9K_INSTANT_PROMPT＝off 」 ，
 接著儲存文字檔( 按 cmd + s )，最後重開iTerm2就會呈現如下畫面。
-
 順帶一提，如果將off改成quiet，也可以正常執行終端機。
 我覺得兩種參數值的執行速度沒有差別，不像錯誤訊息中所說參數值用quiet會比較快。
+
 
 2.如何消除「 [oh-my-zsh] theme ‘powerlevel10k’ not found 」這一句話？
 這次我大方一點直接說，我就是原封不動地Google標題雙引號裡面的內容。
@@ -122,20 +104,18 @@ powerlevel10k之神奇解法
 很幸運地，找到了一個簡易、快速而且可行的解方，剛好這位分享解方的外國前輩獲得最多的按讚數。
 
 非常簡單，按照他說的前2個步驟，
-然後重開iTerm2就會呈現乾淨的畫面(沒有[oh-my-zsh] theme 'powerlevel10k' not found這一行的圖3)。
-
+然後重開iTerm2就會呈現乾淨的畫面(沒有[oh-my-zsh] theme ‘powerlevel10k’ not found這一行的圖3)。
 iTerm2介面調色與預設樣式
-這個是在你選定顏色方案之後做的事情
-先打開iTerm2晾在一旁，可以打一些基本指令，方便之後調色。
-接著按Session =&gt; Edit Session =&gt; Colors
+這個是在你選定顏色方案之後做的事情。
+先打開iTerm2晾在一旁，可以打一些基本指令，方便之後透過對照進行調色。
+接著按Session =&gt; Edit Session =&gt; Colors，
 裡面會有很多預設的長方形色塊，這些都可以改成其他顏色。
 我沒有每個都去研究，我能確定的是Color Preset下方的 Defaults可以更改iTerm2的背景和抬頭顏色，
 然後ANSI Colors的某一些顏色是iTerm2介面上某些區域的顏色，試著去調色就會比較清楚每個顏色對應的區域。
 在你完成調色之後，先完成以下預設動作：
 按Session =&gt; Edit Session =&gt; General，
 然後在該頁面按下「 Copy Current Settings to Selected Profile 」，
-最後按Replace。
-之後你每次都可以使用預設樣式的iTerm2。
+最後按Replace，之後你每次都可以使用預設樣式的iTerm2。
 oh-my-zsh套件簡易說明(我有安裝的套件)
 1.zsh-autosuggestions(自動提示指令)
 當你輸入指令碼時，會以灰字提示上一次使用的相同前綴指令碼，按右鍵可以自動補全。
@@ -158,9 +138,9 @@ fzf的詳細介紹可以參考如下網站
 我是在鋰學院看終端機教學影片前半部之後才知道iTerm2這個酷東西，既然我決定轉職後端工程師，而且以後幾乎每天都會用到終端機，我為何不用個性化，而且可以隨時隨地隨心情調整樣式的終端機呢XD？
 雖然花了將近15個小時才搞定好(每天花兩個多小時，搞了一週。)，但獲益真的真的真的良多。
 有哪些獲益呢？
-1.  熟悉終部分終端機的基本操作
-2.  提升Ｈuli前輩所說的四大核心能力(我就不多說了)
-3.  提升英文閱讀能力
+1. 熟悉終部分終端機的基本操作
+2. 提升Ｈuli前輩所說的四大核心能力(我就不多說了)
+3. 提升英文閱讀能力
 ]]></content>
       <categories>
         <category>安裝教學</category>
@@ -171,5 +151,24 @@ fzf的詳細介紹可以參考如下網站
         <tag>OhMyZsh</tag>
         <tag>powerlevel10k</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2025/10/03/hello-world/</url>
+    <content><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
+Quick Start
+Create a new post
+$ hexo new &quot;My New Post&quot;
+More info: Writing
+Run server
+$ hexo server
+More info: Server
+Generate static files
+$ hexo generate
+More info: Generating
+Deploy to remote sites
+$ hexo deploy
+More info: Deployment
+]]></content>
   </entry>
 </search>
