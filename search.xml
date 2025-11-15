@@ -135,18 +135,24 @@ PS:也可以使用VS Code，打開yml檔進行編輯，程式碼識別度較高�
 
 設定Github SSH連線
 
+
 在iTerm2執行下方兩行指令，
 git config --global user.name(你的Github用戶名稱)
 git config --global user.email(你的Github電子郵件)，
 配置你的Github用戶名稱和電子郵件。
+
+
 接續執行下方兩行指令，
 git config user.name
 git config user.email，
 確認下方出現你的Github用戶名稱和電子郵件是否與上一步輸入的內容相同。
+
+
 執行ssh-keygen -t rsa -C user.email，
 重點來了!重點來了!!重點來了!!!
 後續會出現3次Enter開頭的句子，每出現1次就按1次Enter，
 最後會跑出一行公共密鑰和隨機生成的公鑰辨識圖像。
+
 
 
 
