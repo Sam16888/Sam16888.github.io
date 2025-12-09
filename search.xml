@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>短文測試</title>
+    <url>/2025/10/04/First-test-article/</url>
+    <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
+在家用MBA練習在Hexo發布第一篇測試文章。
+]]></content>
+      <tags>
+        <tag>測試</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac命令列(Command Line)基本指令</title>
     <url>/2025/11/28/Command%20Line/</url>
     <content><![CDATA[操控電腦的介面與方式：
@@ -269,8 +279,8 @@ cat
 
 
 
-grep
 
+grep
 
 全名為Global Regular Expression Print(中譯為全文正則表達式列印)，是一種文本搜尋工具，用於在檔案中搜尋文字字串。
 如果你在提示符後面輸入grep 關鍵字詞 檔案名稱.副檔名並執行，終端機就會一次性顯示整個檔案內容的所有關鍵字詞。
@@ -278,20 +288,14 @@ grep
 進階用法：
 
 
-
 於整個資料夾遞迴搜尋一個關鍵字詞：grep -r &quot;keyword&quot; ./：從當前目錄(.)開始，遞迴搜尋包含 keyword 的所有檔案及其關鍵字詞。
-
-
 於整個資料夾遞迴搜尋多個關鍵字詞：grep -r -e &quot;keyword1&quot; -e &quot;keyword2&quot;... -e &quot;keywordn&quot; ./：從當前目錄(.)開始，遞迴搜尋包含 keyword1 或 keyword2 … 或  keywordn (至少有其中一個關鍵字詞即可)的所有檔案及其關鍵字詞，n為大於2的正整數。
-
-
 如果上述「-r」改成「-rl」，遞迴搜尋的結果只會顯示檔案名稱.副檔名；
 如果上述「-r」改成「-irl」，不分英文字母大小寫進行遞迴搜尋，結果只會顯示檔案名稱.副檔名。
 
 
+
 wget
-
-
 
 全名為World Wide Web Get，用於抓取(下載)網址的資源，可以是網頁、影片、圖片、音訊檔案或文件。
 因為macOS終端機沒有預設該指令，所以需要另外安裝。建議使用Homebrew安裝，在終端機下輸入以下指令brew install wget。
@@ -299,15 +303,15 @@ wget
 如果你想查閱下載檔案，在提示符後面輸入open 下載檔案名稱.副檔名，終端機就會使用適當的應用程式開啟下載檔案的內容。
 
 
-curl
 
+curl
 
 以下網址寫得很清楚，有興趣想了解的人可以參考。
 什麼是 curl 指令？它的運作原理是什麼？
 
 
-echo
 
+echo
 
 用於輸出文字、字串或變數的值到螢幕上
 如果你在提示符後面輸入echo &quot;字串內容(亦可空白)&quot;並執行，終端機就會顯示兩個雙引號內的字串內容。
@@ -363,16 +367,6 @@ pipe( | )
       </tags>
   </entry>
   <entry>
-    <title>短文測試</title>
-    <url>/2025/10/04/First-test-article/</url>
-    <content><![CDATA[今天是西元2025年10月4號星期六，中秋三天連假的第一天，台北天氣晴朗。
-在家用MBA練習在Hexo發布第一篇測試文章。
-]]></content>
-      <tags>
-        <tag>測試</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>KaTeX語法測試-微積分極限定量敘述定義</title>
     <url>/2025/11/03/First-test-KaTeX-Definition%20of%20Limit/</url>
     <content><![CDATA[按照butterfly官網教學安裝完數學套件之後的第一次測試，我就用大一必修微積分的第一個定義：函數極限定量敘述定義當作測試內容。
@@ -389,19 +383,6 @@ pipe( | )
       <tags>
         <tag>測試</tag>
         <tag>微積分</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Markdown插入圖檔測試</title>
-    <url>/2025/10/22/Images%20posting/</url>
-    <content><![CDATA[
-
-]]></content>
-      <categories>
-        <category>Ｍarkdown</category>
-      </categories>
-      <tags>
-        <tag>測試</tag>
       </tags>
   </entry>
   <entry>
@@ -746,5 +727,18 @@ Deploy to remote sites
 $ hexo deploy
 More info: Deployment
 ]]></content>
+  </entry>
+  <entry>
+    <title>Markdown插入圖檔測試</title>
+    <url>/2025/10/22/Images%20posting/</url>
+    <content><![CDATA[
+
+]]></content>
+      <categories>
+        <category>Ｍarkdown</category>
+      </categories>
+      <tags>
+        <tag>測試</tag>
+      </tags>
   </entry>
 </search>
