@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>KaTeX語法測試-微積分極限定量敘述定義</title>
+    <url>/2025/11/03/First-test-KaTeX-Definition%20of%20Limit/</url>
+    <content><![CDATA[按照butterfly官網教學安裝完數學套件之後的第一次測試，我就用大一必修微積分的第一個定義：函數極限定量敘述定義當作測試內容。
+假設DDD為RRR中一個包含aaa的集合，fff為一個從DDD映射至RRR的函數，fff准許在aaa沒有定義，LLL為一個實數。
+如果「 對於任何一個正數 ε\varepsilonε 而言存在一個正數 δ\deltaδ 使得
+當 xxx∈\in∈DDD 且 0&lt;|xxx-aaa|&lt;δ\deltaδ 時，|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε。 」，
+則我們說 fff 在 aaa 的極限為 LLL，以 lim⁡x→af(x)=L\lim_{x \to a} f(x) = Llimx→a​f(x)=L 表示。
+用數學符號述敘極限定義，如下所示。
+∀\forall∀ε\varepsilonε&gt;0 ∃\exists∃δ\deltaδ&gt;0 ∀\forall∀xxx∈\in∈DDD 0&lt;|xxx-aaa|&lt;δ\deltaδ→\to→|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε
+]]></content>
+      <categories>
+        <category>KaTeX</category>
+      </categories>
+      <tags>
+        <tag>測試</tag>
+        <tag>微積分</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mac命令列(Command Line)基本指令</title>
     <url>/2025/11/28/Command%20Line/</url>
     <content><![CDATA[操控電腦的介面與方式：
@@ -339,15 +358,13 @@ pipe( | )
 
 
 心得：
-以上我是看完鋰學院CMD101的教學影片之後，又自行研究部分指令的其他功能，將實用的功能記錄下來。雖然沒有將每個指令介紹得非常詳細，但以上內容對於初學者來說非常夠用。如有錯誤，請不吝指教。
+我看完鋰學院CMD101的教學影片之後，又自行研究部分指令的其他功能，將實用的功能記錄下來。雖然沒有將每個指令介紹得非常詳細，但以上內容對於初學者來說非常夠用。如有錯誤，請不吝指教。
 以下是思維轉變的小小插曲
 由於現在的主流程式編輯器已具備許多提升開發效率的插件和AI工具，所以現今開發人員的敲鍵盤時間相較AI工具出現以前減少了許多，因此盲打不再是提升開發效率的關鍵因素。
-這一句因果關係是我原本的想法，「現在不會盲打的我」也覺得寫程式一段時間之後，盲打能力一定會自然地提升，沒有必要花額外的時間刻意練習盲打，讓自己盡早上手。
-當我的文章寫到Vim的時候，
-因為看到參考連結的貼文裡寫到
+這一句因果關係是我原本的想法，「現在不會盲打的我」覺得寫程式一段時間之後，盲打能力一定會自然地提升，沒有必要花額外的時間刻意練習盲打，讓自己盡早上手。
+當我的文章寫到Vim的時候，因為看到參考連結的貼文裡寫到
 「發揮編輯器Vim(其他IDE也是)的威力有一個必要前提，就是具備盲打能力。」，
-然後我又想到「如果我學會了盲打，每天就能擠出更多的學習時間，轉職後也能擠出一些時間當薪水小偷，何樂而不為？」，
-所以我決定從現在開始，每天學python之前先花一點時間練習盲打直至順手。
+然後我又想到「如果我學會了盲打，每天就能擠出更多的學習時間，轉職後也能擠出一些時間當薪水小偷，何樂而不為？」，所以我決定從現在開始，每天先花一點時間練習盲打直至順手。
 看來我終於有一個正當的理由去買一套機械式鍵盤了哈哈
 ]]></content>
       <tags>
@@ -356,25 +373,6 @@ pipe( | )
         <tag>terminal</tag>
         <tag>Command Line</tag>
         <tag>Vim</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>KaTeX語法測試-微積分極限定量敘述定義</title>
-    <url>/2025/11/03/First-test-KaTeX-Definition%20of%20Limit/</url>
-    <content><![CDATA[按照butterfly官網教學安裝完數學套件之後的第一次測試，我就用大一必修微積分的第一個定義：函數極限定量敘述定義當作測試內容。
-假設DDD為RRR中一個包含aaa的集合，fff為一個從DDD映射至RRR的函數，fff准許在aaa沒有定義，LLL為一個實數。
-如果「 對於任何一個正數 ε\varepsilonε 而言存在一個正數 δ\deltaδ 使得
-當 xxx∈\in∈DDD 且 0&lt;|xxx-aaa|&lt;δ\deltaδ 時，|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε。 」，
-則我們說 fff 在 aaa 的極限為 LLL，以 lim⁡x→af(x)=L\lim_{x \to a} f(x) = Llimx→a​f(x)=L 表示。
-用數學符號述敘極限定義，如下所示。
-∀\forall∀ε\varepsilonε&gt;0 ∃\exists∃δ\deltaδ&gt;0 ∀\forall∀xxx∈\in∈DDD 0&lt;|xxx-aaa|&lt;δ\deltaδ→\to→|f(x)f(x)f(x)-LLL|&lt;ε\varepsilonε
-]]></content>
-      <categories>
-        <category>KaTeX</category>
-      </categories>
-      <tags>
-        <tag>測試</tag>
-        <tag>微積分</tag>
       </tags>
   </entry>
   <entry>
