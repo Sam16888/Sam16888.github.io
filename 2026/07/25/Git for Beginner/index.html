@@ -1,0 +1,650 @@
+<!DOCTYPE html><html lang="zh-TW" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Git介紹與基礎操作 | Sam16888's Blog</title><meta name="author" content="Sam16888,indi08909@gmail.com"><meta name="copyright" content="Sam16888"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="ffffff"><meta name="description" content="版本控制的介紹   版本控制是什麼? 如果你有唸過大學，那麼你一定有用word寫報告的經驗。 令人難以忘懷、耗費很多心力、佔學期成績至少40%， 而且在繳交截止日前，還要熬幾個夜晚才能完成的報告就是期末報告XD 有些人可能會這樣做， 每修改一次報告(XXX.doc)就另存新檔並變更檔名(目的是保留每一次更改的紀錄)， 直至完成最終版本的報告時，就會有數個不同檔名的報告(可視為數個不同版本的報告)。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git介紹與基礎操作">
+<meta property="og:url" content="https://sam16888.github.io/2026/07/25/Git%20for%20Beginner/index.html">
+<meta property="og:site_name" content="Sam16888&#39;s Blog">
+<meta property="og:description" content="版本控制的介紹   版本控制是什麼? 如果你有唸過大學，那麼你一定有用word寫報告的經驗。 令人難以忘懷、耗費很多心力、佔學期成績至少40%， 而且在繳交截止日前，還要熬幾個夜晚才能完成的報告就是期末報告XD 有些人可能會這樣做， 每修改一次報告(XXX.doc)就另存新檔並變更檔名(目的是保留每一次更改的紀錄)， 直至完成最終版本的報告時，就會有數個不同檔名的報告(可視為數個不同版本的報告)。">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://sam16888.github.io/img/sam-cube.png">
+<meta property="article:published_time" content="2026-07-25T09:02:12.768Z">
+<meta property="article:modified_time" content="2026-07-30T12:23:23.174Z">
+<meta property="article:author" content="Sam16888">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="版本控制">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://sam16888.github.io/img/sam-cube.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Git介紹與基礎操作",
+  "url": "https://sam16888.github.io/2026/07/25/Git%20for%20Beginner/",
+  "image": "https://sam16888.github.io/img/sam-cube.png",
+  "datePublished": "2026-07-25T09:02:12.768Z",
+  "dateModified": "2026-07-30T12:23:23.174Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "Sam16888",
+      "url": "https://sam16888.github.io"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://sam16888.github.io/2026/07/25/Git%20for%20Beginner/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css?v=5.5.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.1.0/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', 'ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"pagination":{"enable":true,"hitsPerPage":8},"languages":{"hits_empty":"找不到符合您查詢的內容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '複製成功',
+    error: '複製失敗',
+    noSupport: '瀏覽器不支援'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '剛剛',
+    min: '分鐘前',
+    hour: '小時前',
+    day: '天前',
+    month: '個月前'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"作者: Sam16888","link":"連結: ","source":"來源: Sam16888's Blog","info":"著作權歸作者所有。如需商業轉載，請聯絡作者獲得授權，非商業轉載請註明出處。"}},
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid@4.12.0/dist/infinitegrid.min.js',
+    buttonText: '載入更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Git介紹與基礎操作',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 8.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/sam-cube.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 網鄰</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/img/The-Matrix4-6.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Sam16888's Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Git介紹與基礎操作</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首頁</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜尋</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首頁</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 時間軸</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 標籤</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分類</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 網鄰</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 關於</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Git介紹與基礎操作<a class="post-edit-link" href="null_posts/Git for Beginner.md" title="編輯" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">發表於</span><time class="post-meta-date-created" datetime="2026-07-25T09:02:12.768Z" title="發表於 2026-07-25 17:02:12">2026-07-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新於</span><time class="post-meta-date-updated" datetime="2026-07-30T12:23:23.174Z" title="更新於 2026-07-30 20:23:23">2026-07-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%9F%BA%E7%A4%8E%E6%93%8D%E4%BD%9C%E6%95%99%E5%AD%B8/">基礎操作教學</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">瀏覽量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h3 id="版本控制的介紹">版本控制的介紹</h3>
+<ul>
+<li>
+<p><strong>版本控制是什麼?</strong><br>
+如果你有唸過大學，那麼你一定有用word寫報告的經驗。<br>
+令人難以忘懷、耗費很多心力、佔學期成績至少40%，<br>
+而且在繳交截止日前，還要熬幾個夜晚才能完成的報告就是期末報告XD<br>
+有些人可能會這樣做，<br>
+每修改一次報告(XXX.doc)就另存新檔並變更檔名(目的是保留每一次更改的紀錄)，<br>
+直至完成最終版本的報告時，就會有數個不同檔名的報告(可視為數個不同版本的報告)。<br>
+如果我們將報告視為一種檔案，我們就會有數個不同版本的檔案。<br>
+爾後如果我們想查看某一次變更的檔案內容，我們就可以直接查閱對應版本的檔案；<br>
+如果我們想將某一次變更的檔案再度翻新，我們就不再需要花費更多的時間重從零開始建立檔案。<br>
+簡言之，如果一個檔案有數個不同的版本，我們也將每一個版本的檔案保存起來(方便之後查閱或修改)，<br>
+這就是版本控制的基礎概念。</p>
+</li>
+<li>
+<p><strong>為什麼要用版本控制軟體？</strong><br>
+目的就是解決檔案數量過多或產品開發衍生的問題<br>
+For個人檔案管理：隨著時間的推移，檔案的數量愈來愈多，進而導致檔案管理變得不易 。<br>
+For團隊分支(Branch)管理：若PM臨時有緊急修復bug的需求，工程師團隊必須先還原當下最新版本的專案(新功尚未正式對外發布)並且debug，進而導致耗費冗長的修復時間。</p>
+</li>
+</ul>
+<h3 id="看穿Git-一種版本控制軟體-的把戲-人工版本控制的5種概念">看穿Git(一種版本控制軟體)的把戲 - 人工版本控制的5種概念</h3>
+<ul>
+<li>假設某一個工作目錄下有一個專案(有3個檔案，檔案之間互相依賴。)</li>
+</ul>
+<ul>
+<li>1.建立新版本的專案：先建立一個新資料夾，取名為版本序號，然後複製3個原有的專案檔案，接著將它們拉進資料夾內，最後進行修改及儲存。</li>
+<li>2.不加入版本控制的檔案：將該檔案(隱藏檔案、設定檔案等等)保留在工作目錄之下，不將其加入爾後每一次的新版本資料夾。</li>
+<li>3.避免版本號衝突(共用的工作目錄)：每個人都可以至共用的工作目錄取用最新版本的專案資料夾(假設取名為V3)進行修改，此時如果每個人將專案資料夾取名為V4，那麼上傳至共用的工作目錄之下會發生命名衝突(資料夾迭代)，導致沒有辦法保存每個人修改過的專案。<br>
+為了解決這個問題，我們可以採取絕對不會重複的命名方式(如：亂數)，確保每個人修改的最新版專案都可以上傳至共用的工作目錄。</li>
+<li>4.最新的修改版本：建立一個名為Newest的資料夾，將最新修改的專案資料夾移至該資料夾。</li>
+<li>5.版本的修改紀錄與順序：建立一個名為Order資料夾，將所有修改的專案資料夾移至該資料夾，並以修改時間排序。</li>
+</ul>
+<h3 id="Git基本操作指令">Git基本操作指令</h3>
+<ul>
+<li><font color="green"><strong>1.一元復始：git init(initialize的簡寫)</strong></font></li>
+</ul>
+<ul>
+<li>(1)初始化(initialize)當下的工作目錄，使得Git對該目錄進行版控。</li>
+<li>(2)假設終端機的位置在當下的工作目錄，若你在提示符後面輸入<code>git init</code>並按Enter執行，Git會在該目錄下會建立一個名為「.git」的隱藏資料夾，資料夾的內容是版控所需的預設檔案。可以用指令<code>ls -al</code>查看所有檔案資訊。</li>
+<li>(3)若你在提示符後面輸入<code>rm -rf .git</code>並按Enter執行，即可解除Git對工作目錄的版控初始化，使工作目錄脫離版本控制並刪除Git的隱藏資料夾。</li>
+</ul>
+<ul>
+<li><font color="green"><strong>2.你目前的狀態如何?：git status</strong></font></li>
+</ul>
+<ul>
+<li>(1)(假設終端機的位置在當下的工作目錄，)若你在提示符後面輸入<code>git status</code>並按Enter執行，終端機會顯示當下該目錄內檔案的狀態資訊。<br>
+PS : 之後每一個指令的操作說明都會省略「假設終端機的位置在當下的工作目錄，」。</li>
+<li>(2)查看當下工作目錄中所有檔案的狀態，一共有四種，如下所述。
+<ul>
+<li>Nothing to commit, working tree clean：表示目前沒有任何未提交的變動，工作目錄非常乾淨。</li>
+<li>Untracked files：找到新檔案。若你要將其加入版本控制的名單(暫存區)，請執行 <code>git add 檔案名稱.副檔名</code> 。</li>
+<li>Changes not staged for commit：檔案被修改了。若你要將其加入暫存區，請執行 <code>git add 檔案名稱.副檔名</code>。</li>
+<li>Changes to be committed：檔案被送進暫存區。若你要提交，請執行 <code>git commit -m &quot;提交說明&quot;</code>。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><font color="green"><strong>3.選我選我選我：git add</strong></font></li>
+</ul>
+<ul>
+<li>(1)將(未加入版本控制的)某一個檔案(新檔案或是修改後的檔案)或資料夾(新資料夾或是修改後的資料夾)加入版本控制的名單(暫存區)</li>
+<li>(2)若你在提示符後面輸入<code>git add 檔案名稱. 副檔名</code>(<code>git add 資料夾名稱</code>)並按Enter執行，Git就會將該檔案(資料夾)加入暫存區；<br>
+反之，若你在提示符後面輸入<code>git rm --cached 檔案名稱. 副檔名</code>(<code>git rm --cached 資料夾名稱</code>)並按Enter執行，Git就會將該檔案(資料夾)從暫存區剔除。</li>
+<li>(3)承上，接著可以執行<code>git status</code>查看當前檔案的狀態，「 Changes to be committed : 」的下方會顯示「加入版控的檔案(新的或是修改後的)」，以「 modified:   檔案名稱.副檔名 」表示[若該(新的或是修改後的)檔案是”第一次”加入版控，以「 new file:   檔案名稱.副檔名 」表示。]；而「 Untracked files : 」的下方會顯示「未加入版控的檔案清單」。</li>
+<li>(4)若你想將工作目錄下的所有檔案加入版控的檔案清單，可以執行<code>git add .</code> ；<br>
+反之，可以執行<code>git rm --cached -r .</code> ，即可將加入版控的所有檔案從名單中剔除。</li>
+</ul>
+<ul>
+<li><font color="green"><strong>4.把你寫進我的故事裡：git commit</strong></font></li>
+</ul>
+<ul>
+<li>(1)將變更的檔案加入版控之後，若你在提示符後面輸入<code>git commit 檔案名稱. 副檔名</code>並按Enter執行，Git就會將該檔案建立一個新的版本紀錄，接著會跳出Vim的視窗，然後在裡面輸入文字訊息(commit message)，說明本次變更的內容及原因，最後按「:q」即可退出Vim。</li>
+<li>(2)若於上一個步驟中，你沒有在Vim裡面輸入文字訊息並退出Vim，在提示符後面就會顯示「Aborting commit due to empty commit message.」。<br>
+接著可以在提示符後面輸入<code>git commit -m “文字訊息“</code>，在提示符後面就會顯示建立新版本的檔案。<br>
+補充說明：「git commit -am “文字訊息”」該指令是指可以把「已被追蹤的檔案」加入暫存區並直接提交出去。若你只修改被追蹤的檔案，可以直接使用該指令 ; 若你有新加入的檔案，要先將其加入暫存區，才能使用該指令。</li>
+</ul>
+<ul>
+<li><font color="green"><strong>5.歷史記錄一目了然：git log</strong></font></li>
+</ul>
+<ul>
+<li>(1)承上，若你在提示符後面輸入<code>git  log</code>並按Enter執行，終端機就會顯示先前每一次變更檔案時輸入的文字訊息(每一次變更檔案的紀錄[ 以亂序英數字串當作每一次的變更ID ]、作者和變更時間)。按Ｑ即可退出。</li>
+<li>(2)若你只想查看簡短的變更紀錄，可以在提示符後面輸入<code>git log —oneline</code>並按Enter執行，終端機就會顯示簡短的歷史紀錄，每一個歷史紀錄以變更ID的前7碼和文字訊息表示。<br>
+補充說明：一般而言，在進入版控狀態的工作目錄內都是先修改檔案和加入新的相依檔案，再將這些檔案加入(add)暫存區，最後將其提交(commit)建立一個新的歷史紀錄。<br>
+以人工版控來比喻的話，該程序就好像每作一次變更檔案，就將這些檔案放入一個名為變更ID的資料夾內。</li>
+</ul>
+<ul>
+<li>
+<p><font color="green"><strong>6.我想回到過去：git checkout</strong></font><br>
+若你在提示符後面輸入<code>git checkout 變更ID(某一次變更紀錄對應的亂序英數字串)</code>並按Enter執行，你就可以回到某一個檔案先前某一次的變更紀錄(某一個舊版本的檔案)。<br>
+此時歷史紀錄中最新的(最上面的)變更紀錄就是先前某一次的變更紀錄。<br>
+反之，若你想返回該檔案最近一次的變更紀錄(最新版本的檔案)，可以在提示符後面輸入<code>git checkout master</code>(回到master[ 預設的主要分支 ]的最新版本)。<br>
+以人工版控來比喻的話，該程序就好像從某一個名為變更ID的資料夾跳到另一個名為變更ID的資料夾。</p>
+</li>
+<li>
+<p><font color="green"><strong>7.不重要的邊緣人：.gitignore</strong></font></p>
+</li>
+</ul>
+<ul>
+<li>(1)若在工作目錄中有不需要進行版控的檔案或資料夾(尚未被追蹤的檔案[Untracked files])，那麼可以先建立一個純文字檔「.gitignore」(在提示符後面輸入<code>touch .gitignore</code>)，接著用終端機內建文字編輯器(vim)或是其他文字編輯器(如VS code)將不需要進行版控的檔案或資料夾以「忽略規則的語法」寫入其中並儲存。之後用git status查看檔案或資料夾的狀態時，.gitignore就會出在Untracked files裡面。</li>
+<li>(2)一般而言，「.gitignore」也會加入版控的名單裡面，因為要讓自己或其他經手該工作目錄的人知道有哪些檔案不需要版控。</li>
+</ul>
+<ul>
+<li><font color="green"><strong>8.哪裡不一樣：git diff</strong></font></li>
+</ul>
+<ul>
+<li>
+<p>(1)假設在工作目錄進行版控初始化之後，將原本的工作目錄加入版控的行列並提交(建立初始版本紀錄)。<br>
+第一次修改該檔案並儲存之後，若在提示符後面輸入<code>git diff</code>並按Enter執行，可以查看該檔案的「第一次修改的內容(增加和減少的內容會以不同顏色顯示)」。<br>
+接著將第一次修改後的工作目錄加入版控的行列並提交(第一次變更)。<br>
+後續在每一次修改檔案(第2次修改檔案、第3次修改檔案…)之後，並將其加入版控行列之前，都可以使用「git diff」查看每一次修改的變更內容。<br>
+EX : 第3次修改html檔之後，用「git diff」查看修改的內容正是「增加了<!--3-->」。</p>
+</li>
+<li>
+<p>(2)假設在工作目錄進行版控初始化之後，除了有初始版本的紀錄(第1次commit)之外，你至少有1個後續建立的commit[ 至少有兩個commit ]。<br>
+在第n次修改檔案之後，若在提示符後面輸入<code>git diff “第k次commit ID 前8位字串”</code>並按Enter執行，<br>
+可以查看「第n次修改後的檔案和第k次commit的差異(增加和減少的內容會以不同顏色顯示)」，n,k皆為正整數且n&gt;=k。<br>
+EX : 第3次修改的html檔之後，用「git diff 3d8b928f(第2次commit ID 前8位字串)」查看<br>
+「第3次修改後的html檔和第2次commit的差異」是「增加了<!--2-->和<!--3-->」。</p>
+</li>
+<li>
+<p>(3)假設在工作目錄進行版控初始化之後，除了有初始版本的紀錄(commit)之外，你至少有1個後續建立的commit[ 至少有兩個commit ]。<br>
+在第n次修改檔案並加入版控行列之後，若在提示符後面輸入<code>git diff --cached(或是--staged) “第k次commit ID 前8位字串”</code>並按Enter執行，<br>
+可以查看「第n次修改檔案並加入版控行列之後的檔案和第k次commit的差異(增加和減少的內容會以不同顏色顯示)」，n,k皆為正整數且n&gt;=k。<br>
+EX : 第4次修改html檔並加入版控行列之後，用「git diff --cached 81d07f65f(第3次commit ID 前8位字串)」查看<br>
+「第4次修改後的html檔和第3次commit的差異」是「增加了<!--3-->和<!--4-->」。</p>
+</li>
+<li>
+<p>(4)假設在工作目錄進行版控初始化之後，除了有初始版本的紀錄(commit)之外，你至少有1個後續建立的commit[ 至少有兩個commit ]。<br>
+若在提示符後面輸入<code>git diff “第m次commit ID 前8位字串” “第n次commit ID 前8位字串”</code>並按Enter執行，<br>
+可以查看「第m次commit和第n次commit的差異(增加和減少的內容會以不同顏色顯示)」，n,m皆為正整數且n&gt;m。<br>
+EX : 用「git diff 3d8b928f(第2次commit ID 前8位字串) HEAD(第5次[ 最新的 ]的commit ID 前8位字串)」查看<br>
+「第2次commit和第5次(最新的)commit的差異」是「增加了<!--2-->、<!--3-->和<!--4-->」。<br>
+補充說明：終端機進入git log畫面之後，因為HEAD是最新的commit ID的代名詞，所以「最新的commit ID 前8位字串」可以用「HEAD」取代。<br>
+參考資料：<a target="_blank" rel="noopener" href="https://ithelp.ithome.com.tw/articles/10135441">比對檔案與版本差異</a></p>
+</li>
+</ul>
+<h3 id="Git一般操作程序">Git一般操作程序</h3>
+<ul>
+<li>1.將專案目錄初始化(git init)</li>
+<li>2.查看檔案的狀態(git status)</li>
+<li>3.建立「.gitignore」，用文字編輯器開啟該檔案，將無需被版控的檔案寫進去。</li>
+<li>4.查看檔案的狀態(git status)，確認是否還有該忽略(不需要被版控)的檔案。</li>
+<li>5.將所有檔案(包含「.gitignore」)加入版本控制的名單(git add)</li>
+<li>6.建立第一個提交(git commit -am “1st commit message”)<br>
+上述4個步驟，即可建立初始版本的專案，然後在此基礎上繼續開發專案。</li>
+<li>7.如果有新檔案納入，必須將其加入版本控制的名單(git add 檔案名稱.副檔名)。</li>
+<li>8.當專案進行到一個階段時，可以使用「git diff的相關指令」查看修改內容，之後即可建立第二個提交(git commit -am “2nd commit message”)…</li>
+</ul>
+<h3 id="Git的平行時空-Branch-分支">Git的平行時空 : Branch(分支)</h3>
+<ul>
+<li>
+<p><strong>1.為什麼需要branch?</strong><br>
+假設你開發的產品目前有一個已發佈(commit)的穩定版本，並且你是使用「單一生產線的模式」進行開發。<br>
+如果你在新功能開發至一半的時候，又發現產品有新的bug，那麼以單一產線開發的方式進行新功能開發和debug，而且要在有限的時間內完成這兩件事幾乎是Ｍission Impossible！</p>
+</li>
+<li>
+<p><strong>2.簡易說明新建分支與合併分支</strong><br>
+假設主分支(main)旗下有一個初始專案(init)，初始專案被我更改之後變成一個提交(main-commit-1)，此時我的主分支旗下有init和main-commit-1。<br>
+在main的基礎上，我又創建了一個新分支(new-feature)[ 旗下有init、main-commit-1 ]，main-commit-1被我更改之後變成一個提交(new-feature-commit-1)，<br>
+new-feature-commit-1又被我更改之後變成了一個提交(new-feature-commit-2)，此時我的分支旗下有init、main-commit-1、new-feature-commit-1和new-feature-commit-2。<br>
+又因為new-feature-commit-2是由init演變而來，所以這幾個commit有迭代更改的關係，因此最後我要將主分支和新分支合併(merge)的時候，<br>
+我只需要將 new-feature-commit-1 和 new-feature-commit-2 納入 main 的旗下即可。</p>
+</li>
+</ul>
+<h3 id="Git-Branch基本操作指令">Git Branch基本操作指令</h3>
+<ul>
+<li><font color="green"><strong>1.給我一個新的宇宙：git branch</strong></font></li>
+</ul>
+<ul>
+<li>(1)使用Git初始化工作目錄之後，執行第一次commit，同時Git也會自動生成主分支(master)。</li>
+<li>(2)有了第一個commit之後，若你想建立一個名為name的分支，可以在提示符後面輸入<code>git branch “name”</code>並按Enter執行。</li>
+<li>(3)若你想查看當下所有的分支[ 主分支(master)和其他分支 ]，可以在提示符後面輸入<code>git branch -v</code>並按Enter執行。</li>
+<li>(4)若你想刪掉名為name的分支，可以在提示符後面輸入<code>git branch -d “name”</code>並按Enter執行。</li>
+</ul>
+<ul>
+<li>
+<p><font color="green"><strong>2.穿梭至另一個宇宙：git checkout</strong></font><br>
+假設你有兩個分支(master &amp; new-feature)，而且目前Git是位於master。<br>
+若你想切換至另一個分支(new-feature)，可以在提示符後面輸入<code>git checkout new-feature</code>並按Enter執行。</p>
+</li>
+<li>
+<p><font color="green"><strong>3.當兩個宇宙合併：git merge</strong></font><br>
+假設你有兩個分支(master &amp; new-feature)，而且目前Git是位於master。<br>
+若你想將另一個分支(new-feature)抓進所在分支(master)裡合併，可以在提示符後面輸入<code>git merge new-feature</code>並按Enter執行。<br>
+接著查看目前的狀態(git status)，就會看到最新的commit是master，然後可以將new-feature這個分支刪除(git branch -d “new-feature”)。</p>
+</li>
+<li>
+<p><font color="green"><strong>4.Git : 「當衝突(Conflict)發生時，我沒辦法處理喔!」</strong></font><br>
+假設某一個專案目前有兩個分支(master &amp; new-feature)，你目前的Git是位於master，而你的另一位同事位於new-feature。<br>
+若你們剛好都有改到同一個檔案內的同一行程式碼，那麼兩個分支就會產生衝突，也無法進行合併(merge)。<br>
+當有衝突時，我們要先手動更改發生衝突的地方(一般的做法是選擇其中一個版本或是改成第三種版本)，才可以順利合併。</p>
+</li>
+</ul>
+<h3 id="線上軟體原始碼代管服務平台-Github">線上軟體原始碼代管服務平台 : Github</h3>
+<ul>
+<li><strong>Github是什麼?</strong> :<br>
+Github是一個可視化管理與共享Repository(簡稱為Repo，中譯為倉儲或儲存庫。)的線上軟體原始碼代管服務平台，使用Git作為版本控制的軟體，<br>
+其中Repo是指”被Git控制的“專案目錄(專案資料夾)。</li>
+<li><strong>Git &amp; Github的關係</strong> :<br>
+如果我想讓10歲小朋友聽得懂這兩個概念(Git&amp;Github)，我會用積木設計遊戲、線上積木展示櫃和時光倒流照相機來比喻，如下所述：<br>
+我們寫的程式碼就好像我們用積木設計遊戲製作出的積木成品(比如積木城堡) 。<br>
+Github就好像線上積木展示櫃，我們可以將自己的積木城堡放上去向其他人展示，也可以在上面欣賞別人的積木城堡。<br>
+如果覺得別人的積木城堡很棒，我們不但可以給予評論和點讚，也可以將它取下來自行研究，甚至可以改造別人的積木城堡(比如新蓋屋頂)。<br>
+別人如果滿意我們改造後的城堡，可以將它放在自己的線上積木展示櫃。<br>
+Git就好像時光倒流相機，在線上展示之前，如果我們想紀錄製作的過程，我們可以用照相機拍攝未完成的積木城堡並放在線上展示櫃裡向其他人展示。<br>
+在完成積木城堡之後，如果我們做錯了城堡的屋頂或是想變成另一種風格的屋頂，我們可以用照相機回到過去某一個製作過程重新設計屋頂。<br>
+也因為我們有城堡製作的紀錄，所以我們不用擔心別人可能會改壞我們的城堡，別人一但改壞城堡結構，他可以重新取下改造前的城堡再次改造，也不會影響我們完工的積木城堡。</li>
+</ul>
+<h3 id="遠端共同協作操作指令-使用GitHub">遠端共同協作操作指令(使用GitHub)</h3>
+<ul>
+<li><font color="green"><strong>1.我就是潮流 git push</strong></font></li>
+</ul>
+<ul>
+<li>
+<p>(1)使用終端機「將本地(電腦)中的一個Repository」(push an existing repository from the command line) 或「在GitHub新建一個Repository」(create a new repository on the command line) 推(上傳)至遠端Git伺服器，<br>
+也就是「將專案目錄(包含所有歷史提交和分支)由本地上傳至遠端Git伺服器」。</p>
+</li>
+<li>
+<p>(2)「 create a new repository on the command line 」下方的指令內容與「你在本地新建一個Repository(前述的Git操作程序)」的指令內容差異不大，<br>
+比較不一樣的地方是第一行指令「 echo &quot;# Repo名稱” &gt;&gt; <a target="_blank" rel="noopener" href="http://README.md">README.md</a> 」，該指令的意思是『 建立一個叫做 「<a target="_blank" rel="noopener" href="http://README.md">README.md</a>」 的檔案，並在裡面寫入 「# Repo名稱」 這個專案標題。』。<br>
+為何需要這一行指令? 因為你建立的專案目錄至少要有一個檔案才能進行提交(commit)，而這裡用的檔案是一個md(markdown)檔。<br>
+也因為「在GitHub新建一個Repository」的操作方式與「前述的Git操作程序」差異不大，所以這邊只說明三個共同的指令。</p>
+</li>
+<li>
+<p><mark>git remote add origin <a href="mailto:git@github.com">git@github.com</a>:Sam16888/Git101-practice.git</mark></p>
+</li>
+<li>
+<p>新增一個遠端伺服器，取名為 origin(可自取名稱)，位置是在 GitHub 上新建一個Repository的專屬網址 「 <a href="mailto:git@github.com">git@github.com</a>:Sam16888/Git101-practice.git 」。<br>
+以後你只要在指令中輸入 origin，Git 就會自動代入後面那一長串的 GitHub 網址，不用每次都要複製貼上。<br>
+PS:為何我不選擇使用HTTPS連線協定，而是使用SSH連線協定(要先在 GitHub 上設定過 SSH Key才可以使用)當作遠端伺服器的位置？<br>
+在2021/08/13以前，如果我使用HTTPS連線協定作為遠端伺服器的位置，那麼我無論是上傳(或下載)程式碼時，都要輸入GitHub的帳號和密碼，頗為麻煩。<br>
+在2021/08/13(含)以後，因為GitHub放棄使用「 password authentication 」的認證方式，改為使用「 Personal Access Token(PAT)[ 中譯為個人訪問令牌 ] 」的認證方式， 所以用戶無法像以前透過輸入帳號和密碼的方式上傳資料，而是要使用PAT的認證方式上傳資料，程序上更麻煩XD<br>
+至於要如何使用PAT的認證方式上傳資料，有興趣的人可以自己去問AI。</p>
+</li>
+<li>
+<p><mark>git branch -M main</mark></p>
+</li>
+<li>
+<p>將本地(電腦)主分支Master強制改名為main。<br>
+如果你已經將本地主分支Master改名為main，就可以省略這一行指令。<br>
+至於要怎麼改呢？<br>
+使用終端機進入專案目錄後，先執行該指令「 git config --global init.defaultBranch main 」<br>
+，接著執行版控初始化，以後你本地主分支的名字就會變成main。<br>
+PS : 為響應黑人平權運動，GitHub宣布從2020年10月1日起改變新Git儲存庫的預設命名，以main來取代原本的master。</p>
+</li>
+<li>
+<p><mark>git push -u origin main</mark></p>
+</li>
+<li>
+<p>將本地主分支(main)推送至origin這個遠端伺服器。<br>
+若origin無分支，那麼會新建一個名為main的主分支並生成一個commit ; 若origin有主分支(mian)，那麼會生成一個最新的commit。<br>
+其中「-u (或 --set-upstream)」的意思是設定上游(追蹤)關係。<br>
+也因為這是一個「一勞永逸」的參數，所以第一次執行該指令時加上 -u，Git 就會記住「你的本地主分支(main) 以後都要對應到 origin 的主分支(main)。」</p>
+</li>
+<li>
+<p>(3)實際操作(使用終端機「將本地的一個Repository」push至遠端Git伺服器)：</p>
+</li>
+</ul>
+<ul>
+<li>步驟1 : 先在GitHub新建一個Repository(我沒有加入README)，取名為Git101-practice。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-01.png" alt="我的圖片"></p>
+<ul>
+<li>步驟2 : 打開終端機，將電腦中的專案目錄執行版控初始化，接著選定檔案加入版控。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-02.png" alt="我的圖片"></p>
+<ul>
+<li>步驟3 : 執行第一次commit，將上一步驟建立的專案目錄推(上傳)至遠端Git伺服器的Git101-practice。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-03.png" alt="我的圖片"><br>
+<img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-04.png" alt="我的圖片"></p>
+<ul>
+<li>步驟4 : 將本地的一個Repo推送(上傳)至遠端Git伺服器之後，假設終端機沒有關掉且仍是位於版控狀態之下的專案目錄。<br>
+當你改了檔案(我是改html檔)並且完成第二次commit之後，若想進行第二次push，那麼只需執行「 git push (-u) origin main 」即可。<br>
+完成第二次push之後，commit的數量會變成2，點進去之後你就可以查看每一個commit的紀錄。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-05.png" alt="我的圖片"><br>
+<img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-06.png" alt="我的圖片"></p>
+<ul>
+<li><font color="green"><strong>2.跟隨潮流 git pull</strong></font></li>
+</ul>
+<ul>
+<li>
+<p>(1)將Repository的最新commit(最新變動)由遠端Git伺服器下載至本地。<br>
+承接上一步驟(git push)，若GitHub上的專案資料夾在main分支有最新的commit(你在本地執行git push或是在GitHub進行修改都會產生最新的commit)，而且你的終端機也位於版控狀態下main分支的專案資料夾，<br>
+那麼你可以用「git pull origin main」下載新的commit至你的專案資料夾，也就是將遠端(origin)的main分支抓進本地的main分支裡合併(merge)。<br>
+由此可知，順利git pull的條件是「遠端Git伺服器的commit數量比本地的commit數量還要多」。<br>
+如果該條件不成立，你就無法順利git pull。此時你可能要先完成「解決遠端(origin)的main分支和本地的main分支發生的衝突(conflict)」、「執行git push」或是其他前置作業，才能順利git pull。</p>
+</li>
+<li>
+<p>(2)實際操作(承接Git push實際操作的第四個步驟)：</p>
+</li>
+</ul>
+<ul>
+<li>步驟1 : 前往GitHub中的Git101-practice，選擇某一個檔案進行變更(我是改html檔)，然後執行第三次commit。<br>
+此時遠端Git伺服器的Repo比你電腦上的Repo多了一個commit。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-07.png" alt="我的圖片"></p>
+<ul>
+<li>步驟2 : 回到終端機，將GitHub中Repo拉(下載)至本地。此時本地的Repo會新增第三次commit，就會和遠端Git伺服器的Repo會一模一樣。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-08.png" alt="我的圖片"><br>
+<img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-09.png" alt="我的圖片"></p>
+<ul>
+<li>步驟3 : 承接上一步驟，因為我想刻意製造衝突(Conflict)，看後續會發生什麼事情，所以我先在本地變更html檔(加了<!--3rd change 123456-->)，接著執行第四次commit(3rd change)<br>
+; 在GitHub的Git101-practice變更了html檔(加了<!--3rd change 456789-->)，接著執行第四次commit(3rd change)。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-10.png" alt="我的圖片"><br>
+<img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-11.png" alt="我的圖片"></p>
+<p>然後我執行「git pull origin main」，以下是後續遇到的情況：</p>
+<ul>
+<li>步驟4 : 本地分支和遠端Git分支出現分歧(顯示訊息fatal: Need to specify how to reconcile divergent branches.)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-12.png" alt="我的圖片"></p>
+<ul>
+<li>步驟5 : 解決分歧。我選用的方法是 Merge，執行<code>git config pull.rebase false</code>，該方法可以保留本地分支和遠端Git分支的變更[兩個不同作者的3rd change提交]。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-13.png" alt="我的圖片"></p>
+<p>參考資料：<br>
+1.<a target="_blank" rel="noopener" href="https://juejin.cn/post/7580263284336525353">Git Pull 策略完全指南</a><br>
+2.<a target="_blank" rel="noopener" href="https://jumping-code.com/2022/06/09/solution-git-divergent-branches/#git-pull-%E6%99%82%E7%9A%84%E9%8C%AF%E8%AA%A4">解決 git pull 錯誤</a></p>
+<ul>
+<li>步驟6 : 重新執行「git pull origin main」</li>
+<li>步驟7 : 化解衝突[ 我接受來源變更(在GitHub上的變更，而不是本機的變更。) ]，並建立新的commit(4th change)。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-14.png" alt="我的圖片"><br>
+<img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-15.png" alt="我的圖片"></p>
+<ul>
+<li>步驟8 : 執行「git push origin main」，將本地最新的commit推至遠端Git伺服器。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-16.png" alt="我的圖片"><br>
+<img src="https://raw.githubusercontent.com/Sam16888/Hexo-Blog-Images/refs/heads/main/4thPost/4-17.png" alt="我的圖片"></p>
+<ul>
+<li><font color="green"><strong>3.抓到你了git clone</strong></font></li>
+</ul>
+<ul>
+<li>(1)將Github上的某一個開源專案下載至本地(電腦)，儲存於終端機當下的工作位置。</li>
+<li>(2)實際操作<br>
+步驟1 : 打開終端機將工作位置移至你想下載開源專案的位置<br>
+步驟2 : 打開瀏覽器，前往開源專案的GitHub頁面，頁面右上角有一個綠色按鈕(&lt; &gt; code)，點擊之後會預設顯示Local，下方有三種clone的方式。<br>
+如果不想用終端機下載專案，也可以直接下載ZIP壓縮檔至目的地。<br>
+步驟3 : 複製連結 HTTPS 或 SSH<br>
+步驟4 : 在終端機執行「git clone 複製的連結」，即可將開源專案(包含所有歷史提交和分支)下載至本地並存放於當下的工作位置。<br>
+PS :「 git clone 」與「 git pull 」的差異：<br>
+「 git clone 」適用於初次下載本地沒有的專案(包含所有歷史提交和分支)，<br>
+「 git pull 」適用於下載本地已有的專案更新(遠端伺服器的專案更新)並將其合併至至本地的同名分支。</li>
+</ul>
+<h3 id="心得">心得</h3>
+<p>早在3月初的時候，我已經剛看了40%的鋰學院ＧIT101教學影片。<br>
+為何會拖到7月中才看完全部的課程？</p>
+<p>3月中的時候，開始忙搬家的事情，一直忙到4月中。<br>
+4月中的時候，重新看一遍前40%的課程影片和自己的寫的筆記。<br>
+5月初的時後，我離職並開始過著每天看pressplay的線上課程-終極學習系統(搬家之前，有優惠時所購買。)和準備第8屆WeHelp的申請作業，一直忙到月底。<br>
+6月初ＷeHelp培訓開始，在第一週(試水溫)之後，因為我覺得他們的培訓方式不太適合我(我認為高壓的學習環境完全無法使我的學習模式符合終極學習系統的核心精神)<br>
+，所以我決定退訓，改以完全自學的方式準備轉職。</p>
+<p>退訓之後，我開始接續看終極學習系統和ＧIT101後面60%的課程，預計７月底前看完這兩個課程並擬定初步的學習計劃，然後於8月初開始執行轉職自學計劃。<br>
+直至7月中我才看完ＧIT101的教學影片，目前只剩下終極學習系統最後兩週的課程。</p>
+<p>對於非本科準備轉職軟體工程師的人而言，我很推薦ＧIT101這一堂課(雖然有點課程影片有點舊XD)，因為這一堂課本身就是為初學者設計的。<br>
+如果你願意搭配我寫的這一篇貼文學習，你應該沒有道理學不會XD<br>
+比較需要注意的地方是有些情境是要在「多人協作的時候」才有可能發生，自己一個人比較難模擬出這樣的情境。<br>
+這一部分的內容先大致了解即可，等你以後實際遇到各種情境的時候再去了解與學習即可。</p>
+<p>Git其實和HTML&amp;CSS一樣，易學難精，這一門課教的內容只是一小部分，但對於初學者而言非常足夠。<br>
+如果你覺得Git很有趣，也想學得更深入、更完整，這件事可以等到你轉職為前後端工程師之後再進行(我就是這樣想的)。</p>
+<h3 id="學習資源">學習資源</h3>
+<p>1.<a target="_blank" rel="noopener" href="https://gitbook.tw/">為你自己學Git(免費)</a><br>
+2.<a target="_blank" rel="noopener" href="https://lidemy.teachable.com/p/git101">鋰學院GIT101(Git超新手入門)</a><br>
+3.<a target="_blank" rel="noopener" href="https://5xcampus.com/courses/git-live-stream">五倍學院 - 坐上 Git 時光機</a><br>
+4.<a target="_blank" rel="noopener" href="https://learn.duotify.com/courses/git-newbie">多奇教育訓練 - 精通 Git 版本控管：從入門到進階</a></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="https://sam16888.github.io">Sam16888</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章連結: </span><span class="post-copyright-info"><a href="https://sam16888.github.io/2026/07/25/Git%20for%20Beginner/">https://sam16888.github.io/2026/07/25/Git%20for%20Beginner/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版權聲明: </span><span class="post-copyright-info">本部落格所有文章除特別聲明外，均採用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 授權協議。轉載請註明來源 <a href="https://sam16888.github.io" target="_blank">Sam16888's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/">版本控制</a><a class="post-meta__tags" href="/tags/Git/">Git</a><a class="post-meta__tags" href="/tags/GitHub/">GitHub</a></div><div class="post-share"><div class="addtoany"><div class="a2a_kit a2a_kit_size_32 a2a_default_style"><a class="a2a_button_facebook"></a><a class="a2a_button_x"></a><a class="a2a_button_wechat"></a><a class="a2a_button_sina_weibo"></a><a class="a2a_button_facebook_messenger"></a><a class="a2a_button_email"></a><a class="a2a_button_copy_link"></a><a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a></div></div><script async="async" src="https://static.addtoany.com/menu/page.js"></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/11/28/Command%20Line/" title="Mac命令列(Command Line)基本指令"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">Mac命令列(Command Line)基本指令</div></div><div class="info-2"><div class="info-item-1">操控電腦的介面與方式：  GUI(Graphical User Interface)圖形使用者介面 ： 使用滑鼠點按或手指觸碰圖像與作業系統互動的介面，如Windows桌面、macOS桌面和智慧型手機桌面等等。 CLI(Command-Line Interface)命令列介面 ： 使用鍵盤輸入指令與作業系統互動的介面，也有人稱之為CUI(Character User Interface)文字使用者介面，如Windows的命令提示字元、Linux/macOS的終端機。  重要目錄(For macOS)  根目錄(/)：macOS的第一個資料夾，包含系統相關的資料夾。 使用者目錄(/Users)：包含所有使用者的家目錄。 家目錄(~ 等同於 /Users/你的使用者名稱 )：每個使用者存放個人檔案的資料夾。打開終端機時，預設位置為家目錄。  絕對路徑與相對路徑  絕對路徑：從檔案系統的根目錄開始的完整路徑。在Unix/Linux中是「 / 」開頭，在Windows中是「 C:\ 」開頭。 如：/Users/你的使用者名稱/Desktop 相對路徑：從當下工作目錄開始，指定一個檔案或目...</div></div></div></a></nav><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 評論</span></div><div class="comment-switch"><span class="first-comment">Gitalk</span><span id="switch-btn"></span><span class="second-comment">Facebook Comments</span></div></div><div class="comment-wrap"><div><div id="gitalk-container"></div></div><div><div class="fb-comments" data-colorscheme="light" data-numposts="10" data-order-by="social" data-width="100%"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/sam-cube.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">Sam16888</div><div class="author-info-description">完美的事情絕對是假的！</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">標籤</div><div class="length-num">17</div></a><a href="/categories/"><div class="headline">分類</div><div class="length-num">4</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://github.com/Sam16888" target="_blank" title="Github"><i class="fa-brands fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:indi08909@gmail.com" target="_blank" title="Email"><i class="fa-solid fa-envelope" style="color: #4a7dbe;"></i></a><a class="social-icon" href="https://sssamchang168.wordpress.com/" target="_blank" title="Ｗordpress"><i class="fa-brands fa-wordpress" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">Bienvenidos Al Nuevo Mundo</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目錄</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%9A%84%E4%BB%8B%E7%B4%B9"><span class="toc-number">1.</span> <span class="toc-text">版本控制的介紹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9C%8B%E7%A9%BFGit-%E4%B8%80%E7%A8%AE%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E8%BB%9F%E9%AB%94-%E7%9A%84%E6%8A%8A%E6%88%B2-%E4%BA%BA%E5%B7%A5%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6%E7%9A%845%E7%A8%AE%E6%A6%82%E5%BF%B5"><span class="toc-number">2.</span> <span class="toc-text">看穿Git(一種版本控制軟體)的把戲 - 人工版本控制的5種概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">3.</span> <span class="toc-text">Git基本操作指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git%E4%B8%80%E8%88%AC%E6%93%8D%E4%BD%9C%E7%A8%8B%E5%BA%8F"><span class="toc-number">4.</span> <span class="toc-text">Git一般操作程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git%E7%9A%84%E5%B9%B3%E8%A1%8C%E6%99%82%E7%A9%BA-Branch-%E5%88%86%E6%94%AF"><span class="toc-number">5.</span> <span class="toc-text">Git的平行時空 : Branch(分支)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-Branch%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">Git Branch基本操作指令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B7%9A%E4%B8%8A%E8%BB%9F%E9%AB%94%E5%8E%9F%E5%A7%8B%E7%A2%BC%E4%BB%A3%E7%AE%A1%E6%9C%8D%E5%8B%99%E5%B9%B3%E5%8F%B0-Github"><span class="toc-number">7.</span> <span class="toc-text">線上軟體原始碼代管服務平台 : Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%81%A0%E7%AB%AF%E5%85%B1%E5%90%8C%E5%8D%94%E4%BD%9C%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4-%E4%BD%BF%E7%94%A8GitHub"><span class="toc-number">8.</span> <span class="toc-text">遠端共同協作操作指令(使用GitHub)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%83%E5%BE%97"><span class="toc-number">9.</span> <span class="toc-text">心得</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%B8%E7%BF%92%E8%B3%87%E6%BA%90"><span class="toc-number">10.</span> <span class="toc-text">學習資源</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/07/25/Git%20for%20Beginner/" title="Git介紹與基礎操作">Git介紹與基礎操作</a><time datetime="2026-07-25T09:02:12.768Z" title="發表於 2026-07-25 17:02:12">2026-07-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/28/Command%20Line/" title="Mac命令列(Command Line)基本指令">Mac命令列(Command Line)基本指令</a><time datetime="2025-11-28T10:37:58.381Z" title="發表於 2025-11-28 18:37:58">2025-11-28</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/10/Install%20Hexo%20and%20set%20Github%20Pages/" title="使用Hexo和Github Pages架設個人部落格(主題為Butterfly)">使用Hexo和Github Pages架設個人部落格(主題為Butterfly)</a><time datetime="2025-11-10T08:51:53.609Z" title="發表於 2025-11-10 16:51:53">2025-11-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/03/First-test-KaTeX-Definition%20of%20Limit/" title="KaTeX語法測試-微積分極限定量敘述定義">KaTeX語法測試-微積分極限定量敘述定義</a><time datetime="2025-11-03T10:26:48.000Z" title="發表於 2025-11-03 18:26:48">2025-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/11/03/Install%20iTerm2/" title="在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k">在Ｍacbook Air M4安裝終端機iTerm2、套件OhMyZsh和主題powerlevel10k</a><time datetime="2025-11-03T10:25:45.692Z" title="發表於 2025-11-03 18:25:45">2025-11-03</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/10/22/Images%20posting/" title="Markdown插入圖檔測試">Markdown插入圖檔測試</a><time datetime="2025-10-22T10:48:52.364Z" title="發表於 2025-10-22 18:48:52">2025-10-22</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(/img/The-Matrix4-6.jpg);"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By Sam16888</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.0.0</a><span class="footer-separator">|</span><span>主題 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.1</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="閱讀模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日夜模式切換"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="單欄和雙欄切換"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="設定"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目錄"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往評論"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到頂端"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js?v=5.5.1"></script><script src="/js/main.js?v=5.5.1"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'
+  const option = null
+
+  const commentCount = n => {
+    const isCommentCount = document.querySelector('#post-meta .gitalk-comment-count')
+    if (isCommentCount) {
+      isCommentCount.textContent= n
+    }
+  }
+
+  const initGitalk = (el, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyGitalk = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    const gitalk = new Gitalk({
+      clientID: '',
+      clientSecret: '',
+      repo: '',
+      owner: '',
+      admin: [''],
+      updateCountCallback: commentCount,
+      ...option,
+      id: isShuoshuo ? path : (option && option.id) || 'a7be957104d08da9990d03386c12834b'
+    })
+
+    gitalk.render('gitalk-container')
+  }
+
+  const loadGitalk = async(el, path) => {
+    if (typeof Gitalk === 'function') initGitalk(el, path)
+    else {
+      await btf.getCSS('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.css')
+      await btf.getScript('https://cdn.jsdelivr.net/npm/gitalk@1.8.0/dist/gitalk.min.js')
+      initGitalk(el, path)
+    }
+  }
+
+  if (isShuoshuo) {
+    'Gitalk' === 'Gitalk'
+      ? window.shuoshuoComment = { loadComment: loadGitalk }
+      : window.loadOtherComment = loadGitalk
+    return
+  }
+
+  if ('Gitalk' === 'Gitalk' || !true) {
+    if (true) btf.loadComment(document.getElementById('gitalk-container'), loadGitalk)
+    else loadGitalk()
+  } else {
+    window.loadOtherComment = loadGitalk
+  }
+})()</script><script>(()=>{
+  const isShuoshuo = GLOBAL_CONFIG_SITE.pageType === 'shuoshuo'== 'shuoshuo'
+
+  const loadFBComment = (el = document, path) => {
+    if (isShuoshuo) {
+      window.shuoshuoComment.destroyFB = () => {
+        if (el.children.length) {
+          el.innerHTML = ''
+          el.classList.add('no-comment')
+        }
+      }
+    }
+
+    document.getElementById('fb-root') ? '' : document.body.insertAdjacentHTML('afterend', '<div id="fb-root"></div>')
+
+    const themeNow = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light'
+    const $fbComment = el.getElementsByClassName('fb-comments')[0]
+    $fbComment.setAttribute('data-colorscheme',themeNow)
+    $fbComment.setAttribute('data-href', isShuoshuo ? 'https://sam16888.github.io/2026/07/25/Git%20for%20Beginner/' + '#' + path : 'https://sam16888.github.io/2026/07/25/Git%20for%20Beginner/')
+
+    if (typeof FB === 'object') {
+      FB.XFBML.parse(document.getElementsByClassName('post-meta-commentcount')[0])
+      FB.XFBML.parse(el.querySelector('#post-comment'))
+    }
+    else {
+      let ele = document.createElement('script')
+      ele.setAttribute('src','https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v20.0')
+      ele.setAttribute('async', 'true')
+      ele.setAttribute('defer', 'true')
+      ele.setAttribute('crossorigin', 'anonymous')
+      ele.setAttribute('id', 'facebook-jssdk')
+      document.getElementById('fb-root').insertAdjacentElement('afterbegin',ele)
+    }
+  }
+
+  const fbModeChange = theme => {
+    const $fbComment = document.getElementsByClassName('fb-comments')[0]
+    if ($fbComment && typeof FB === 'object') {
+      $fbComment.setAttribute('data-colorscheme',theme)
+      FB.XFBML.parse(document.getElementById('post-comment'))
+    }
+  }
+
+  btf.addGlobalFn('themeChange', fbModeChange, 'facebook_comments')
+
+  if (isShuoshuo) {
+    'Gitalk' === 'Facebook Comments'
+      ? window.shuoshuoComment = { loadComment: loadFBComment }
+      : window.loadOtherComment = loadFBComment
+    return
+  }
+
+  if ('Gitalk' === 'Facebook Comments' || !true) {
+    if (true) btf.loadComment(document.querySelector('#post-comment .fb-comments'), loadFBComment)
+    else loadFBComment()
+  } else {
+    window.loadOtherComment = loadFBComment
+  }
+})()</script></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/canvas-fluttering-ribbon.min.js"></script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1.1.6/dist/click-show-text.min.js" data-mobile="false" data-text="Ｗelcome,To,The,New,World" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜尋</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  資料載入中</span></div><div class="local-search-input"><input placeholder="搜尋文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="/js/search/local-search.js?v=5.5.1"></script></div></div></body></html>
